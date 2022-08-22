@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { CuerpoComponent } from './cuerpo/cuerpo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    PerfilComponent,
+    CuerpoComponent
   ],
   imports: [
     BrowserModule
