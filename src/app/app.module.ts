@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CuerpoComponent } from './cuerpo/cuerpo.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +14,8 @@ import { CuerpoComponent } from './cuerpo/cuerpo.component';
     CuerpoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
