@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #04338b;
+}
+
+li, a, button {
+    font-family: 'Encode Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10%;
+}
+
+.logo {
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav {
+    list-style: none;
+}
+
+.nav li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav li a:hover {
+    color: #f3b325;
+}
+
+button {
+    padding: 9px 25px;
+    background-color: #241c24;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s easer 0s;
+}
+
+button:hover {
+    background-color: #f3b325;
+}
+
+.button {
+    list-style: none;
+}
+
+img {
+    position:relative;
+    width:53.3px;
+    height:39.7px;
+    padding: 0;
+}
+
+strong {
+    padding-left: 15px;
+}

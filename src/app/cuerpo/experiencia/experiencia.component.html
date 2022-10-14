@@ -1,0 +1,121 @@
+<div class="card mat-card" id="third-card">
+    <h2><strong>Experiencia</strong></h2> 
+
+            <div class="botones" *ngIf="esAdmin">
+                <button (click)="show=!show; onCrear($event)" *ngIf="show" type="button" class="boton btn btn-success btn-sm"
+                data-bs-toggle="modal" data-bs-target="#nuevo"><i class="fa-solid fa-plus"></i></button>
+                <button (click)="show=!show" type="button" class="boton btn btn-primary btn-sm"><i class="fa fa-pen"></i></button>
+            </div>
+            <hr>
+            <div class="container-fluid">
+            <div class="row align-items-center m-2" *ngFor="let experiencia of experiencias; let i = index" [attr.data-index]="i">
+                <div *ngIf="show" class="botoneliminar">
+                    <button (click)="onDelete(i, $event); show=!show" type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                    <button (click)="onEdit(experiencia.id, i, $event); show=!show" type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editar"><i class="fa fa-pen"></i></button>
+                </div>
+                <div class="contenedor col">
+                <img [src]="experiencia.imagen" alt="Lugar" class="imagen">
+                </div>
+                <div class="col">
+                <h3><strong>{{experiencia.nombreEmpresa}}</strong></h3>
+                <p><b>Inicio: </b>{{experiencia.fechaInicio}}</p>
+                <p><b>Trabajo Actual: </b>{{experiencia.esTrabajoActual}}</p>
+                <p>{{experiencia.descripcion}}</p>
+                </div>
+                <hr>
+            </div>
+
+<!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> 
+  <div class="modal fade" id="nuevo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Experiencia</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" (ngSubmit)="onSaveNuevo($event)">                
+                <div class="m-2">
+                    <label for="nombreEmpresa" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="nombreEmpresa" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="fechaInicio" class="form-label">Inicio</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="fechaInicio" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="esTrabajoActual" class="form-label">Estado</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="esTrabajoActual" required>
+                </div>
+                
+                <div class="m-2">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="descripcion" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="imagen" class="form-label">URL de Imagen</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="imagen" required>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button (click)="onSaveNuevo($event)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+<!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" -->
+
+<!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> 
+  <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Experiencia</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form">                
+                <div class="m-2">
+                    <label for="nombreEmpresa" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="nombreEmpresa" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="fechaInicio" class="form-label">Inicio</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="fechaInicio" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="esTrabajoActual" class="form-label">Estado</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="esTrabajoActual" required>
+                </div>
+                
+                <div class="m-2">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="descripcion" required>
+                </div>
+
+                <div class="m-2">
+                    <label for="imagen" class="form-label">URL de Imagen</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="imagen" required>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="onSaveEdit($event)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> 
+            </div>
+</div>

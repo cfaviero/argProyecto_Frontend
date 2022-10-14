@@ -1,0 +1,37 @@
+<div class="header">
+
+  <div *ngIf="isLogged">
+    <img class="logo" src="../../assets/argProLogoNegro.png" alt="Argentina Programa">
+    <strong style="color:white">#YoProgramo</strong>
+      <!--<a class="nav-link"  routerLink="/login">Iniciar Sesión</a>-->
+  </div>
+
+  <div *ngIf="!isLogged">
+    <img class="logo" src="../../assets/argProLogoBlanco.png" alt="Argentina Programa">
+    <strong style="color: white">Argentina Programa - #YoProgramo</strong>
+    <!--<a class="nav-link"  routerLink="/login">Iniciar Sesión</a>-->
+  </div>
+
+  <nav>
+    <ul class="nav">        
+      
+      <li *ngIf="isLogged">
+        <a [href]="redPerfil.url_instagram" target="_blank" rel="noreferrer nooponer">Instagram</a>
+      </li>
+      
+      <li *ngIf="isLogged">
+        <a [href]="redPerfil.url_twitter" target="_blank">Twitter</a>
+      </li>
+      
+      <li *ngIf="isLogged">
+        <a [href]="redPerfil.url_facebook" target="_blank">Facebook</a>
+      </li>
+
+    </ul>
+  </nav>
+  
+  <li class="button" *ngIf="isLogged" (click)="onLogOut()">
+    <a style="cursor: pointer;"> <button>Cerrar Sesión</button></a>
+  </li>
+
+</div>

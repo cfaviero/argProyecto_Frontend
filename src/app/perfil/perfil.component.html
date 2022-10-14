@@ -1,27 +1,89 @@
 <div class="card mat-card" id="first-class">
-    <div class="profile-background"><img class="img-fluid banner" src="assets/banner.jpg" alt="Banner">
+    <div class="profile-background">
+        <img class="banner img-fluid" [src]="perfil.foto_banner" alt="Banner" >
     </div>
-  <div class="info" style="padding: 16px">
-    <div class="info-image">
-        <img class="profile-image" src="assets/foto-perfil.png" alt="Foto de Perfil">
-        <div class="fapen1">
-            <a href="#">
+    
+    <div class="info" style="padding: 16px">
+
+        <div class="info-image">
+            <img class="profile-image" [src]="perfil.foto_perfil" alt="Foto de Perfil" >
+        </div>
+
+        <div *ngIf="esAdmin">
+            <button data-backdrop="false" type="button" (click)="onEdit( perfil.id, $event)" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <i class="fa fa-pen"></i>
-            </a>
+            </button>
+        </div>
+
+        <div class="info-data">
+            <h1>{{perfil.nombre}} {{perfil.apellido}}</h1>
+            <div><span>{{perfil.descripcion}}</span></div>        
+        </div>
+    
+        <app-conocimientos></app-conocimientos>
+
+<!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> 
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edición Info Personal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form [formGroup]="form" (ngSubmit)="onSaveEdit(perfil.id, $event)">
+                <div  class="m-2">
+                    <div><label for="nombre" class="form-label  fw-bold">Nombre:</label></div>
+                    <input type="text" name="nombre" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Nombre"  formControlName="nombre" id="nombre" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="apellido" class="form-label  fw-bold">Apellido:</label></div>
+                    <input type="text" name="apellido" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Apellido"  formControlName="apellido" id="apellido" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="descripción" class="form-label  fw-bold">Descripción:</label></div>
+                    <input type="text" id="myInput" name="descripcion" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Descripcion"  formControlName="descripcion" id="descripcion" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="foto_perfil" class="form-label  fw-bold">Foto de Perfil (Link):</label></div>
+                    <input type="text" name="foto_perfil" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Foto de Perfil"  formControlName="foto_perfil" id="foto_perfil" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="foto_banner" class="form-label  fw-bold">Foto del Banner (Link):</label></div>
+                    <input type="text" name="foto_banner" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Foto de Banner"  formControlName="foto_banner" id="foto_banner" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="url_instagram" class="form-label  fw-bold">Instagram:</label></div>
+                    <input type="text" name="url_instagram" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="URL Instagram"  formControlName="url_instagram" id="url_instagram" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="url_twitter" class="form-label  fw-bold">Twitter:</label></div>
+                    <input type="text" name="url_twitter" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="URL Twitter"  formControlName="url_twitter" id="url_twitter" required>
+                </div>
+
+                <div  class="m-2">
+                    <div><label for="url_facebook" class="form-label  fw-bold">Facebook:</label></div>
+                    <input type="text" name="url_facebook" class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="URL Facebook"  formControlName="url_facebook" id="url_facebook" required>
+                </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" (click)="onSaveEdit(perfil.id, $event)" data-bs-dismiss="modal" aria-label="Close">Guardar</button>
+            </div>
         </div>
     </div>
-    <div class="info-data">
-        <h1>Cristian Faviero</h1>
-        <div>Estudiante de Analista en Sistemas</div>
-        <div>
-            <span>Ciudad de Posadas (Misiones, Argentina)</span>
-            <span>Información de Contacto</span>
-        </div>
+</div>
+<!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" -->
+    
     </div>
-    <div class="info-actions">
-        <button type="button" class="btn btn-primary">Intereses</button>
-        <button type="button" class="btn btn-secondary">Añadir Sección</button>
-        <button type="button" class="btn btn-info">Más</button>
-    </div>
-  </div>    
-  </div>
+  
+</div>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@900&display=swap');
+
+
+.nombre { 
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.fa, .fa-solid {
+    background-color:transparent;
+}
+
+#fifth-card{    
+    background-color: black;
+    margin: 10px 50px;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    color: white;
+}
+
+p {
+    text-align: center;
+}
+
+.span {
+    margin-bottom: 4.5%;
+    margin-top: 3%;
+}
+
+.botones {
+    display: flex;
+    justify-content: right;
+    margin-right: 2%;
+}

@@ -1,0 +1,37 @@
+.contenedor {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.imagen {
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+
+.row {
+    margin-bottom: 12%;
+}
+
+hr {
+    background-color: black;
+    height: 2px;
+    border: none;
+}
+
+.botones {
+    display: flex;
+    justify-content: right;
+    margin-right: 2%;
+}
+
+.boton {
+    margin-right: 0.5%;
+}
+
+.botoneliminar {
+    margin: 0;
+}

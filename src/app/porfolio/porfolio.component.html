@@ -1,0 +1,10 @@
+<app-menu></app-menu>
+
+<div *ngIf="isLogged; else loggedOut" class="container-fluid">
+
+<app-perfil></app-perfil>
+<app-cuerpo></app-cuerpo>
+
+</div>
+
+<ng-template #loggedOut><h2>No iniciaste sesión</h2></ng-template>

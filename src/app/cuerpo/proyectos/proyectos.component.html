@@ -1,0 +1,112 @@
+<div class="card mat-card" id="fifth-card">
+    <div class="header">
+    <h2><strong>Proyectos</strong></h2> 
+        <div class="botones" *ngIf="esAdmin">
+            <button (click)="show=!show; onCrear($event)" *ngIf="show" type="button" class="boton btn btn-success btn-sm"
+            data-bs-toggle="modal" data-bs-target="#nuevoPro"><i class="fa-solid fa-plus"></i></button>
+            <button (click)="show=!show" type="button" class="boton btn btn-primary btn-sm"><i class="fa fa-pen"></i></button>
+        </div>
+    </div>
+        <hr>
+    <div class="container-fluid">
+    <div class="row align-items-center m-2" *ngFor="let proyecto of proyectos; let i = index" [attr.data-index]="i">
+        <div *ngIf="show" class="botoneliminar">
+            <button (click)="onDelete(i, $event); show=!show" type="button" class="col btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+            <button (click)="onEdit(proyecto.id, i, $event); show=!show" type="button"
+            class="boton btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editPro"><i class="fa fa-pen"></i></button>
+        </div>
+
+        <div class="col">
+            
+            <div class="d-grid gap-2">
+                <p class="descripcion">{{proyecto.descripcion}}</p>
+                <button class="nombre btn btn-outline-primary" type="button">
+                    <a style="text-decoration:none; color: white" [href]="proyecto.url_proyecto" target="_blank">{{proyecto.nombreProyecto}}</a></button>
+                
+            </div>
+            
+        </div>
+<div class="span">
+<span class="placeholder col-12 bg-success"></span>
+<span class="placeholder col-12 bg-danger"></span>
+<span class="placeholder col-12 bg-warning"></span>
+</div>
+    </div>
+    
+    </div>
+
+</div>
+
+
+<!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> <!-- FORM ↓ "NEW" --> 
+<div class="modal fade" id="nuevoPro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Proyecto</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onSaveNuevo($event)">                
+            <div class="m-2">
+                <label for="nombreProyecto" class="form-label">Nombre Proyecto</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="nombreProyecto" required>
+            </div>
+            
+            <div class="m-2">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" formControlName="descripcion" required>
+            </div>
+    
+            <div class="m-2">
+                <label for="url_proyecto" class="form-label">Link al Proyecto</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" formControlName="url_proyecto" required>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <button (click)="onSaveNuevo($event)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+    </div>
+    
+    
+    </div>
+    </div>
+    </div>
+    <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" --> <!-- FORM ↑ "NEW" -->
+    
+    <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> 
+    <div class="modal fade" id="editPro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Proyecto</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form">                
+            <div class="m-2">
+                <label for="nombreProyecto" class="form-label">Nombre del Proyecto</label>
+                <input type="text" name="nombreProyecto" class="form-control" id="nombreProyecto" formControlName="nombreProyecto" required>
+            </div>
+            
+            <div class="m-2">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <input type="text" name="descripcion" class="form-control" id="descripcion" formControlName="descripcion" required>
+            </div>
+    
+            <div class="m-2">
+                <label for="url_proyecto" class="form-label">Link al Proyecto</label>
+                <input type="text" name="url_proyecto" class="form-control" id="url_proyecto" formControlName="url_proyecto" required>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button (click)="onSaveEdit($event)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> 

@@ -1,62 +1,37 @@
 <div class="card mat-card" id="second-card">
-    <div class="row">
-    <div class="col">
-        <h2>Acerca de</h2>
-        <div class="detalles"><p>Estudiante de programación y analista en sistemas</p></div>
-    </div>
-    <div class="col">
-        <a href="#">
-          <i class="fa fa-pen" id="confgpen"></i>
-        </a>
-    </div>
-    </div>
-  </div>
   
-  <div class="card mat-card" id="third-card">
-    <div class="row">
-    <div class="col">
-        <h2>Experiencia</h2>
-        <div class="detalles">
-          <p>Sistemas, Sanatorio Privado</p>
-      </div>
-    </div>
-    <div class="col">
-      <a href="#">
-        <i class="fa fa-pen" id="confgpen"></i>
-      </a>
-  </div>
-    </div>
-        
-    <hr>
-    <div class="row">
-      <div class="col">
-        <h2>Educación</h2>
-        <div class="detalles">
-          <p>Estudiante de Analista en Sistemas</p>
-          <p>Curso Desarrollador Full Stack (en Curso)</p>
-        </div>
-      </div>
-      <div class="col">
-          <a href="#">
-            <i class="fa fa-pen" id="confgpen2"></i>
-          </a>
-      </div>
-    </div>
+  <h2><strong>Acerca de</strong></h2>
   
-    <hr>
-    <div class="row">
-      <div class="col">
-        <h2>Educación</h2>
-        <div class="detalles">
-          <p>Estudiante de Analista en Sistemas</p>
-          <p>Curso Desarrollador Full Stack (en Curso)</p>
-        </div>
-      </div>
-      <div class="col">
-          <a href="#">
-            <i class="fa fa-pen" id="confgpen2"></i>
-          </a>
-      </div>
-    </div>
-    
+  <div *ngIf="esAdmin" class="botonacercade">
+    <button id="botonacercade" type="button" (click)="onEdit(acercade.id, $event); show=!show" class="btn btn-primary btn-sm">
+      <i class="fa fa-pen"></i>
+    </button>
   </div>
+
+  <div class="detalles"><p>{{ acercade.descripcion }}</p></div>
+  
+<!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" --> <!-- FORM ↓ "EDIT" -->
+  <div *ngIf="show" class="editor row">
+    <hr>
+    <form [formGroup]="form">
+      <div class="m-2">
+        <label class="form-label fw-bold m-2">Editando Acerca De:</label>
+        <textarea name="descripcion" [(ngModel)]="acercade.descripcion"
+        class="form-control col-8 p-2 mb-2 border rounded border-1" placeholder="Agrega un Resumen"
+        formControlName="descripcion" id="descripcion" required></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="show=!show">Cancelar</button>
+        <button type="submit" class="btn btn-primary" (click)="onSaveEdit($event); show=!show">Guardar</button>
+      </div>
+    </form>
+  </div>
+<!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" --> <!-- FORM ↑ "EDIT" -->
+
+</div>
+
+<app-educacion></app-educacion>
+
+<app-experiencia></app-experiencia>
+
+<app-proyectos></app-proyectos>
