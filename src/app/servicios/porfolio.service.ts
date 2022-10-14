@@ -12,7 +12,7 @@ import { ISkills } from '../interfaces/iskills';
   providedIn: 'root'
 })
 export class PorfolioService {
-  url:string="http://localhost:8080/api/";
+  url:string="https://argproyecto.herokuapp.com/api/";
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ import { LoginUsuario } from '../interfaces/login-usuario';
 })
 export class AutenticacionService {
 
-  autenticacionURL = 'http://localhost:8080/auth/';
+  autenticacionURL = 'https://argproyecto.herokuapp.com/auth/';
   usuario: BehaviorSubject<any>;
 
   constructor(private httpClient: HttpClient) {
